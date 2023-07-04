@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css" />
+
+    <!-- Bootstrap version 5.3.0 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Media Query -->
+    <link rel="stylesheet" href="./assets/css/media.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+    />
+
+    <!-- Title -->
+    <title>Task Manager</title>
+  </head>
+  <body>
+    <section class="gradient-custom-2">
+      <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-12 col-lg-12">
+            <div class="card">
+              <div class="card-body p-4 text-white">
+                <!-- Headline -->
+                <div class="row g-4">
+                  <div class="col-sm-2 col-md-2">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                      <li class="nav-item dropdown">
+                        <a
+                          class="nav-link dropdown-toggle"
+                          href="javascript:void(0)"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          Change Mode
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              id="light_id"
+                              href="javascript:void(0)"
+                            >
+                              <i class="fa fa-sun-o" aria-hidden="true"></i>
+                              Light
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              id="dark_id"
+                              href="javascript:void(0)"
+                            >
+                              <i class="fa fa-moon-o" aria-hidden="true"></i>
+                              Dark
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-10 col-md-6">
+                    <div class="d-flex headingParent">
+                      <div class="heading d-flex">
+                        <div class="logo">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                            alt="Check"
+                          />
+                        </div>
+                        <h2 class="text">
+                          <span>Task Manager</span>
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-4">
+                    <div class="form-floating">
+                      <select
+                        class="form-select"
+                        id="floatingSelect"
+                        aria-label="Floating label select example"
+                      >
+                        <option value="all" selected>All</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                      </select>
+                      <label for="floatingSelect">Filtered By Priority</label>
+                    </div>
+                  </div>
+                </div>
+                <!-- Search & Add -->
+                <div class="row g-4 mt-1">
+                  <div class="col-8 col-sm-8 col-md-8 col-lg-10">
+                    <div class="headingButton">
+                      <div class="input-group">
+                        <button
+                          class="btn btn-outline-info"
+                          type="button"
+                          id="search-button"
+                        >
+                          <i class="fa fa-search"></i>
+                        </button>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Search Task Based on Title..."
+                          aria-label="Search Task"
+                          aria-describedby="search-button"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-4 col-sm-4 col-md-4 col-lg-2">
+                    <div class="headingButton">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addModal"
+                      >
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>Add
+                        New
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Main List Table -->
+                <div class="row mt-3">
+                  <div class="table-responsive">
+                    <table class="table text-white mb-0">
+                      <thead>
+                        <tr>
+                          <th>Task Title</th>
+                          <th>Priority</th>
+                          <th>Assignee</th>
+                          <th>Progress</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="fw-normal">
+                          <td class="align-middle">
+                            <span class="task-title"
+                              >Inform HR About Festival Bonus</span
+                            >
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-warning">Medium</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle">
+                            <span class="task-assignee">Alice Mayer</span>
+                          </td>
+                          <td class="align-middle" style="min-width: 170px">
+                            <div
+                              class="progress"
+                              role="progressbar"
+                              aria-label="Success example"
+                              aria-valuenow="100"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            >
+                              <div
+                                class="progress-bar progress-bar-striped bg-success"
+                                style="width: 100%"
+                              >
+                                100%
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-success">Completed</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle" style="min-width: 120px">
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#viewModal"
+                              title="View"
+                            >
+                              <i class="fa fa-eye text-info"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              title="Remove"
+                            >
+                              <i class="fa fa-trash text-warning"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#editModal"
+                              title="Edit"
+                            >
+                              <i class="fa fa-pencil text-success"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr class="fw-normal">
+                          <td class="align-middle">
+                            <span class="task-title"
+                              >Finish the UI Fast !!</span
+                            >
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-warning">Medium</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle">
+                            <span class="task-assignee">Kate Moss</span>
+                          </td>
+                          <td class="align-middle" style="min-width: 170px">
+                            <div
+                              class="progress"
+                              role="progressbar"
+                              aria-label="Error example"
+                              aria-valuenow="0"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            >
+                              <div
+                                class="progress-bar progress-bar-striped bg-error"
+                                style="width: 0%"
+                              >
+                                0%
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-danger">Pending</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle" style="min-width: 120px">
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#viewModal"
+                              title="View"
+                            >
+                              <i class="fa fa-eye text-info"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              title="Remove"
+                            >
+                              <i class="fa fa-trash text-warning"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#editModal"
+                              title="Edit"
+                            >
+                              <i class="fa fa-pencil text-success"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr class="fw-normal">
+                          <td class="align-middle">
+                            <span class="task-title"
+                              >Call Sam For payments</span
+                            >
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-success">Low</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle">
+                            <span class="task-assignee">Alexa Chung</span>
+                          </td>
+                          <td class="align-middle" style="min-width: 170px">
+                            <div
+                              class="progress"
+                              role="progressbar"
+                              aria-label="Success example"
+                              aria-valuenow="66"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            >
+                              <div
+                                class="progress-bar progress-bar-striped bg-info"
+                                style="width: 66%"
+                              >
+                                66%
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-info text-dark"
+                                >In Progress</span
+                              >
+                            </h6>
+                          </td>
+                          <td class="align-middle" style="min-width: 120px">
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#viewModal"
+                              title="View"
+                            >
+                              <i class="fa fa-eye text-info"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              title="Remove"
+                            >
+                              <i class="fa fa-trash text-warning"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#editModal"
+                              title="Edit"
+                            >
+                              <i class="fa fa-pencil text-success"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr class="fw-normal">
+                          <td class="align-middle">
+                            <span class="task-title"
+                              >Check All Task Properly</span
+                            >
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-danger">High</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle">
+                            <span class="task-assignee">Ben Smith</span>
+                          </td>
+                          <td class="align-middle" style="min-width: 170px">
+                            <div
+                              class="progress"
+                              role="progressbar"
+                              aria-label="Success example"
+                              aria-valuenow="100"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            >
+                              <div
+                                class="progress-bar progress-bar-striped bg-success"
+                                style="width: 100%"
+                              >
+                                100%
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-success">Completed</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle" style="min-width: 120px">
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#viewModal"
+                              title="View"
+                            >
+                              <i class="fa fa-eye text-info"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              title="Remove"
+                            >
+                              <i class="fa fa-trash text-warning"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#editModal"
+                              title="Edit"
+                            >
+                              <i class="fa fa-pencil text-success"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr class="fw-normal">
+                          <td class="align-middle">
+                            <span class="task-title"
+                              >Update Task Report Immediately</span
+                            >
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-danger">High</span>
+                            </h6>
+                          </td>
+                          <td class="align-middle">
+                            <span class="task-assignee">Danny McChain</span>
+                          </td>
+                          <td class="align-middle" style="min-width: 170px">
+                            <div
+                              class="progress"
+                              role="progressbar"
+                              aria-label="Success example"
+                              aria-valuenow="45"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            >
+                              <div
+                                class="progress-bar progress-bar-striped bg-info"
+                                style="width: 45%"
+                              >
+                                45%
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle">
+                            <h6 class="mb-0">
+                              <span class="badge bg-info text-dark"
+                                >In Progress</span
+                              >
+                            </h6>
+                          </td>
+                          <td class="align-middle" style="min-width: 120px">
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#viewModal"
+                              title="View"
+                            >
+                              <i class="fa fa-eye text-info"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              title="Remove"
+                            >
+                              <i class="fa fa-trash text-warning"></i>
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-link"
+                              data-bs-toggle="modal"
+                              data-bs-target="#editModal"
+                              title="Edit"
+                            >
+                              <i class="fa fa-pencil text-success"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="6" class="text-center">
+                            <button class="btn btn-custom btn-sm">
+                              Load More Tasks
+                            </button>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add Modal -->
+    <div
+      class="modal fade"
+      id="addModal"
+      tabindex="-1"
+      aria-labelledby="addModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addModalLabel">Task Status:</h1>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="taskAddProgress"
+                id="progressPending"
+              />
+              <label class="form-check-label" for="progressPending">
+                Pending
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="taskAddProgress"
+                id="progressInProgress"
+                checked
+              />
+              <label class="form-check-label" for="progressInProgress">
+                In Progress
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="taskAddProgress"
+                id="progressCompleted"
+              />
+              <label class="form-check-label" for="progressCompleted">
+                Completed
+              </label>
+            </div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label for="priority-set">Task Priority</label>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    id="priority-set"
+                  >
+                    <option value="high-priority">High</option>
+                    <option value="medium-priority" selected>Medium</option>
+                    <option value="low-priority">Low</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label
+                    style="width: 100%"
+                    for="taskProgress"
+                    class="form-label"
+                  >
+                    <span class="d-flex justify-content-between">
+                      <span>Task Progress</span>
+                      <span> <span class="percentage"></span> % </span>
+                    </span>
+                  </label>
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="0"
+                    max="100"
+                    step="0.5"
+                    value="33"
+                    id="taskProgress"
+                  />
+                </div>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  placeholder="Task Title"
+                />
+                <label for="title">Task Title</label>
+              </div>
+              <div class="form-floating mb-3">
+                <textarea
+                  class="form-control"
+                  id="details"
+                  placeholder="Task Details"
+                ></textarea>
+                <label for="details">Task Details</label>
+              </div>
+              <div class="form-floating mb-3">
+                <select
+                  class="form-select"
+                  id="assigneeSelect"
+                  aria-label="Floating label select example"
+                >
+                  <option value="alice-mayer">Alice Mayer</option>
+                  <option value="kate-moss" selected>Kate Moss</option>
+                  <option value="alexa-chung">Alexa Chung</option>
+                  <option value="danny-mcchain">Danny McChain</option>
+                  <option value="ben-smith">Ben Smith</option>
+                </select>
+                <label for="assigneeSelect"
+                  >Assignee (To whom Task liability is transferred)</label
+                >
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="start-time">Start Time</label>
+                    <input
+                      type="datetime-local"
+                      id="start-time"
+                      name="start-time"
+                      value="2023-06-23T09:30"
+                      min="2023-06-07T00:00"
+                      max="2023-06-23T00:00"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="end-time">End Time</label>
+                    <input
+                      type="datetime-local"
+                      id="end-time"
+                      name="end-time"
+                      value="2023-06-24T23:55"
+                      min="2023-06-07T00:00"
+                      max="2023-06-24T00:00"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Add New Task</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      aria-labelledby="editModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="editModalLabel">Task Status:</h1>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="taskProgress"
+                id="progressPending"
+                checked
+              />
+              <label class="form-check-label" for="progressPending">
+                Pending
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="taskProgress"
+                id="progressInProgress"
+              />
+              <label class="form-check-label" for="progressInProgress">
+                In Progress
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="taskProgress"
+                id="progressCompleted"
+              />
+              <label class="form-check-label" for="progressCompleted">
+                Completed
+              </label>
+            </div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label for="priority-set">Task Priority</label>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    id="priority-set"
+                  >
+                    <option value="high-priority">High</option>
+                    <option value="medium-priority" selected>Medium</option>
+                    <option value="low-priority">Low</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label
+                    style="width: 100%"
+                    for="taskProgress"
+                    class="form-label"
+                  >
+                    <span class="d-flex justify-content-between">
+                      <span>Task Progress</span>
+                      <span> <span class="percentage"></span> % </span>
+                    </span>
+                  </label>
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="0"
+                    max="100"
+                    step="0.5"
+                    value="33"
+                    id="taskProgress"
+                  />
+                </div>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  placeholder="Task Title"
+                />
+                <label for="title">Task Title</label>
+              </div>
+              <div class="form-floating mb-3">
+                <textarea
+                  class="form-control"
+                  id="details"
+                  placeholder="Task Details"
+                ></textarea>
+                <label for="details">Task Details</label>
+              </div>
+              <div class="form-floating mb-3">
+                <select
+                  class="form-select"
+                  id="assigneeSelect"
+                  aria-label="Floating label select example"
+                >
+                  <option value="alice-mayer">Alice Mayer</option>
+                  <option value="kate-moss" selected>Kate Moss</option>
+                  <option value="alexa-chung">Alexa Chung</option>
+                  <option value="danny-mcchain">Danny McChain</option>
+                  <option value="ben-smith">Ben Smith</option>
+                </select>
+                <label for="assigneeSelect"
+                  >Assignee (To whom Task liability is transferred)</label
+                >
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="start-time">Start Time</label>
+                    <input
+                      type="datetime-local"
+                      id="start-time"
+                      name="start-time"
+                      value="2023-06-23T09:30"
+                      min="2023-06-07T00:00"
+                      max="2023-06-23T00:00"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="end-time">End Time</label>
+                    <input
+                      type="datetime-local"
+                      id="end-time"
+                      name="end-time"
+                      value="2023-06-24T23:55"
+                      min="2023-06-07T00:00"
+                      max="2023-06-24T00:00"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Update Task</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View Modal -->
+    <div
+      class="modal fade"
+      id="viewModal"
+      tabindex="-1"
+      aria-labelledby="viewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <p style="margin-bottom: 0px; margin-top: -5px">
+                  Task Progress
+                </p>
+              </div>
+              <div class="col-sm-6 col-md-8">
+                <div
+                  class="progress"
+                  role="progressbar"
+                  aria-label="Success example"
+                  aria-valuenow="100"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 270px"
+                >
+                  <div
+                    class="progress-bar progress-bar-striped bg-info"
+                    style="width: 45%"
+                  >
+                    45%
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <h3>
+                  <small class="text-body-secondary"
+                    >Check All Task Properly</small
+                  >
+                </h3>
+                <h6 class="card-subtitle my-2 text-body-secondary">
+                  This Task is Assigned to
+                  <span class="text-info">
+                    <strong> Ben Smith </strong>
+                  </span>
+                </h6>
+                <p class="card-text">
+                  <strong>Task Details:</strong> All Pending Tasks Should be
+                  Checked fast and Properly. Try to understand the Solution of
+                  Each problem thoroughly.
+                </p>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <span>
+                      Task Priority :
+                      <span class="badge bg-warning">Medium</span>
+                    </span>
+                  </div>
+                  <div class="col-6">
+                    Task Status :
+                    <span class="badge bg-danger">Pending</span>
+                  </div>
+                </div>
+                <p class="card-text">
+                  <strong>Task Started at:</strong> 09:45p.m(21/02/2022)
+                </p>
+                <p class="card-text">
+                  <strong>Task Ended at:</strong> 10:00a.m(22/02/2022)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Starts -->
+    <footer>
+      <p class="text-center my-2" data-bs-theme="dark">
+        Copyright <span id="year"></span> ©
+        <span><span id="company_name"></span></span>
+      </p>
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- JS Links -->
+    <script src="./assets/js/jquery-1.12.4.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/mode.js"></script>
+    <script src="./assets/js/scripts.js"></script>
+  </body>
+</html>
