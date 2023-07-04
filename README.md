@@ -1,3 +1,3 @@
 ## Task Manager Application
 
-Live link: Will be Added Later
+Live link: https://react-task-manager-by-miraz.netlify.app
